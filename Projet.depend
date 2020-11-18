@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1604396822 source:c:\users\florent\desktop\projet\src\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<SDL2/SDL.h>
+
+1605604637 source:c:\users\florent\desktop\projet\src\c\main.c
+	"../h/main.h"
+
+1605602393 source:c:\users\florent\desktop\projet\src\c\draw.c
+	"../h/draw.h"
+
+1604506439 c:\users\florent\desktop\projet\src\h\prototypes.h
+	"structs.h"
+
+1605602866 c:\users\florent\desktop\projet\src\h\structs.h
+
+1605604691 c:\users\florent\desktop\projet\src\h\defs.h
+
+1605601664 source:c:\users\florent\desktop\projet\src\c\init.c
+	"../h/init.h"
+
+1605604256 source:c:\users\florent\desktop\projet\src\c\input.c
+	"../h/input.h"
+
+1605601233 c:\users\florent\desktop\projet\src\h\draw.h
+	"common.h"
+	"SDL2/SDL_image.h"
+
+1605599824 c:\users\florent\desktop\projet\src\h\common.h
+	"stdlib.h"
+	"stdio.h"
+	"string.h"
+	"math.h"
+	"ctype.h"
+	"SDL2/SDL.h"
+	"defs.h"
+	"structs.h"
+
+1605604255 c:\users\florent\desktop\projet\src\h\input.h
+	"common.h"
+
+1605601079 c:\users\florent\desktop\projet\src\h\main.h
+	"common.h"
+
+1605601285 c:\users\florent\desktop\projet\src\h\init.h
+	"common.h"
+	"SDL2/SDL_image.h"
+
+1605694985 source:c:\users\florent\desktop\flight_simulator-main\src\c\draw.c
+	"../h/draw.h"
+
+1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\draw.h
+	"common.h"
+	"SDL2/SDL_image.h"
+
+1605696992 c:\users\florent\desktop\flight_simulator-main\src\h\common.h
+	"stdlib.h"
+	"stdio.h"
+	"string.h"
+	"math.h"
+	"ctype.h"
+	"SDL2/SDL.h"
+	"defs.h"
+	"structs.h"
+
+1605693854 c:\users\florent\desktop\flight_simulator-main\src\h\defs.h
+
+1605696975 c:\users\florent\desktop\flight_simulator-main\src\h\structs.h
+
+1605694985 source:c:\users\florent\desktop\flight_simulator-main\src\c\input.c
+	"../h/input.h"
+
+1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\input.h
+	"common.h"
+
+1605696046 source:c:\users\florent\desktop\flight_simulator-main\src\c\main.c
+	"../h/main.h"
+
+1605696088 c:\users\florent\desktop\flight_simulator-main\src\h\main.h
+	"common.h"
+
+1605696133 source:c:\users\florent\desktop\flight_simulator-main\src\c\stage.c
+	"../h/stage.h"
+
+1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\stage.h
+	"common.h"
+
+1605690350 source:c:\users\florent\desktop\flight_simulator-main\src\c\util.c
+	"../h/util.h"
+
+1605688713 c:\users\florent\desktop\flight_simulator-main\src\h\util.h
+	"common.h"
+
+1605691876 source:c:\users\florent\desktop\flight_simulator-main\src\c\init.c
+	"../h/init.h"
+
+1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\init.h
+	"common.h"
+	"SDL2/SDL_image.h"
+
