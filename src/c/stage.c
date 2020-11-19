@@ -72,11 +72,11 @@ void logic(void){
 
 static void doPlayer(void){
 
-	if (app.keyboard[SDL_SCANCODE_LEFT] && player->x > 5){
+	if (app.keyboard[SDL_SCANCODE_LEFT] && player->x > 90){
 		player->x -= PLAYER_SPEED;
 	}
 
-	if (app.keyboard[SDL_SCANCODE_RIGHT] && player->x < 595){
+	if (app.keyboard[SDL_SCANCODE_RIGHT] && player->x < 510){
 		player->x += PLAYER_SPEED;
 	}
 
@@ -115,7 +115,7 @@ static void spawnObjects(void){
 		stage.fighterTail->next = enemy;
 		stage.fighterTail = enemy;
 
-		enemy->x = rand() %SCREEN_WIDTH;
+		enemy->x = rand()%(SCREEN_WIDTH-250)+100;
 		enemy->y = -50;
 		enemy->texture = enemyTexture;
 		SDL_QueryTexture(enemy->texture, NULL, NULL, &enemy->w, &enemy->h);
