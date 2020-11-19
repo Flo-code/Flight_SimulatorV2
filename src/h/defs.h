@@ -8,3 +8,4 @@
 
 #define MAX_KEYBOARD_KEYS 350
 
+#define SPEEDRUNWAY 8

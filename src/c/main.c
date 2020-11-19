@@ -9,14 +9,15 @@ int main(int argc, char *argv[]){
 	initSDL();
 
 	atexit(cleanup);
+
     while(1){
+
         initStage();
 
         while (planeLife()!=0){
             prepareScene();
 
             doInput();
-
             logic();
             draw();
 
