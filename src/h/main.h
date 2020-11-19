@@ -6,3 +6,5 @@ extern void initSDL(void);
 extern void initStage(void);
 extern void prepareScene(void);
 extern void presentScene(void);
+extern void logic(void);
+extern void draw(void);

@@ -1,13 +1,8 @@
 #include "../h/init.h"
 
-void initSDL(void)
-{
-	int rendererFlags, windowFlags;
+void initSDL(void){
 
-	rendererFlags = SDL_RENDERER_ACCELERATED;
-
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
+	if (SDL_Init(SDL_INIT_VIDEO) < 0){
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
 	}
@@ -16,13 +11,12 @@ void initSDL(void)
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
-	app.renderer = SDL_CreateRenderer(app.window, -1, rendererFlags);
+	app.renderer = SDL_CreateRenderer(app.window, -1, SDL_RENDERER_ACCELERATED);
 
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 }
 
-void cleanup(void)
-{
+void cleanup(void){
 	SDL_DestroyRenderer(app.renderer);
 
 	SDL_DestroyWindow(app.window);

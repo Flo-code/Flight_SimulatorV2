@@ -3,28 +3,27 @@
 App app;
 Stage stage;
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
 	memset(&app, 0, sizeof(App));
 
 	initSDL();
 
 	atexit(cleanup);
+    while(1){
+        initStage();
 
-	initStage();
+        while (planeLife()!=0){
+            prepareScene();
 
+            doInput();
 
-	while (1)
-	{
-		prepareScene();
+            logic();
+            draw();
 
-		doInput();
-        app.delegate.logic();
-        app.delegate.draw();
-		presentScene();
+            presentScene();
 
-        SDL_Delay(16);
-	}
-
+            SDL_Delay(16);
+        }
+    }
 	return 0;
 }

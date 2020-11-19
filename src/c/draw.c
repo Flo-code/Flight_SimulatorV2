@@ -1,19 +1,16 @@
 #include "../h/draw.h"
 //Prépare rendu
-void prepareScene(void)
-{
+void prepareScene(void){
 	SDL_SetRenderDrawColor(app.renderer, 32, 32, 32, 255);
 	SDL_RenderClear(app.renderer);
 }
 
 //Affiche le rendu
-void presentScene(void)
-{
+void presentScene(void){
 	SDL_RenderPresent(app.renderer);
 }
 
-SDL_Texture *loadTexture(char *filename)
-{
+SDL_Texture *loadTexture(char *filename){
 	SDL_Texture *texture;
 
 	texture = IMG_LoadTexture(app.renderer, filename);
@@ -22,8 +19,7 @@ SDL_Texture *loadTexture(char *filename)
 }
 
 //Déplacement des items dans la fenêtre
-void blit(SDL_Texture *texture, int x, int y)
-{
+void blit(SDL_Texture *texture, int x, int y){
 	SDL_Rect dest;
 
 	dest.x = x;
