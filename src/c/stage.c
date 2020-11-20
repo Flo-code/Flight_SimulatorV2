@@ -93,7 +93,7 @@ static void doObjects(void){
             e->x += e->dx;
             e->y += e->dy;
 
-            if (e->x < -e->w || e->health<=0 ){
+            if (e->x > SCREEN_WIDTH || e->y > SCREEN_HEIGHT|| e->health<=0 ){//TODO modif condition
                 //Reparcourir la liste chainée
                 if (e == stage.fighterTail){
                     stage.fighterTail = prev;
@@ -124,23 +124,23 @@ static void spawnObjects(void){
         memset(enemy, 0, sizeof(Entity));
         stage.fighterTail->next = enemy;
         stage.fighterTail = enemy;
-        int randomEnemy = rand()%2;
-        if(randomEnemy==0){
+        int randomEnemy = rand()%10;
+        if(randomEnemy<=6){
         //Taille crate prise en compte dans le calcul
             enemy->x = rand()%(SCREEN_WIDTH-250)+100;
             enemy->y = -50;
             enemy->dy = SPEEDRUNWAY;
             enemy->health = 2;
+            enemy->texture = enemyTexture[0];
         }
-        if(randomEnemy==1){
+        if(randomEnemy>6){
             enemy->y = rand()%(SCREEN_HEIGHT-200);
             enemy->x = -30;
             enemy->dx = 5;
             enemy->dy = 4;
             enemy->health = 1;
+            enemy->texture = enemyTexture[1];
         }
-
-        enemy->texture = enemyTexture[randomEnemy];
 		SDL_QueryTexture(enemy->texture, NULL, NULL, &enemy->w, &enemy->h);
 		enemySpawnTimer = 30 + (rand() % 10);
 	}
