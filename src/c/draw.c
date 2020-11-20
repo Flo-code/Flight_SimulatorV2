@@ -1,5 +1,5 @@
 #include "../h/draw.h"
-//Prépare rendu
+//PrÃ©pare rendu
 void prepareScene(void){
 	SDL_SetRenderDrawColor(app.renderer, 32, 32, 32, 255);
 	SDL_RenderClear(app.renderer);
@@ -18,7 +18,7 @@ SDL_Texture *loadTexture(char *filename){
 	return texture;
 }
 
-//Déplacement des items dans la fenêtre
+//DÃ©placement des items dans la fenÃªtre
 void blit(SDL_Texture *texture, int x, int y){
 	SDL_Rect dest;
 

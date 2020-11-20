@@ -49,24 +49,25 @@
 	"common.h"
 	"SDL2/SDL_image.h"
 
-1605702323 source:c:\users\florent\desktop\flight_simulator-main\src\c\draw.c
+1605809840 source:c:\users\florent\desktop\flight_simulator-main\src\c\draw.c
 	"../h/draw.h"
 
-1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\draw.h
+1605805617 c:\users\florent\desktop\flight_simulator-main\src\h\draw.h
 	"common.h"
-	"SDL2/SDL_image.h"
+	<SDL2/SDL_image.h>
 
-1605696992 c:\users\florent\desktop\flight_simulator-main\src\h\common.h
-	"stdlib.h"
-	"stdio.h"
-	"string.h"
-	"math.h"
-	"ctype.h"
-	"SDL2/SDL.h"
+1605806366 c:\users\florent\desktop\flight_simulator-main\src\h\common.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
 	"defs.h"
 	"structs.h"
 
-1605804164 c:\users\florent\desktop\flight_simulator-main\src\h\defs.h
+1605826241 c:\users\florent\desktop\flight_simulator-main\src\h\defs.h
 
 1605697284 c:\users\florent\desktop\flight_simulator-main\src\h\structs.h
 
@@ -76,13 +77,13 @@
 1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\input.h
 	"common.h"
 
-1605803166 source:c:\users\florent\desktop\flight_simulator-main\src\c\main.c
+1605823722 source:c:\users\florent\desktop\flight_simulator-main\src\c\main.c
 	"../h/main.h"
 
 1605802623 c:\users\florent\desktop\flight_simulator-main\src\h\main.h
 	"common.h"
 
-1605804431 source:c:\users\florent\desktop\flight_simulator-main\src\c\stage.c
+1605831806 source:c:\users\florent\desktop\flight_simulator-main\src\c\stage.c
 	"../h/stage.h"
 
 1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\stage.h
@@ -94,10 +95,10 @@
 1605688713 c:\users\florent\desktop\flight_simulator-main\src\h\util.h
 	"common.h"
 
-1605771575 source:c:\users\florent\desktop\flight_simulator-main\src\c\init.c
+1605806417 source:c:\users\florent\desktop\flight_simulator-main\src\c\init.c
 	"../h/init.h"
 
-1605688701 c:\users\florent\desktop\flight_simulator-main\src\h\init.h
+1605805617 c:\users\florent\desktop\flight_simulator-main\src\h\init.h
 	"common.h"
-	"SDL2/SDL_image.h"
+	<SDL2/SDL_image.h>
 
