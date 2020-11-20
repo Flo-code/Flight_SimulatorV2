@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
 	atexit(cleanup);
     while(1){
         initStage();
-        while (planeLife()!=0){
+        while (planeLife()>0){
             prepareScene();
 
             doInput();
