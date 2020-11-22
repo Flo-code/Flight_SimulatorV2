@@ -8,3 +8,6 @@ extern void prepareScene(void);
 extern void presentScene(void);
 extern void logic(void);
 extern void draw(void);
+extern void initialiseMemory(void);
+extern void deleteObjects(void);
+extern void drawGameover(void);

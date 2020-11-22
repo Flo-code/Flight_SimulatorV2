@@ -1,65 +1,76 @@
 #include "../h/stage.h"
 
-//For main
-void logic(void);
-void draw(void);
-int planeLife(void);
-//Local
-static void initBackgroung(void);
-static void initPlane(void);
-static void initLife(void);
-
-static void doPlayer(void);
-static void doObjects(void);
-
-static void drawItems(void);
-static void drawBackground(void);
-static void drawLife(void);
-
-static void spawnObjects(void);
-static void hitPlane(void);
 //Vars
 Entity *player;
-static SDL_Texture *enemyTexture[2];
-static SDL_Texture *Aeroport;
-static SDL_Texture *life;
-static int enemySpawnTimer;
-static SDL_Rect piste =  {0, 0, SCREEN_WIDTH ,SCREEN_HEIGHT };
+SDL_Texture *enemyTexture[2];
+SDL_Texture *Aeroport;
+SDL_Texture *life;
+SDL_Texture *gameoverScreen;
+int enemySpawnTimer;
+SDL_Rect piste =  {0, 0, SCREEN_WIDTH ,SCREEN_HEIGHT };
 
 void initStage(void){
-	memset(&stage, 0, sizeof(Stage));
-	stage.fighterTail = &stage.fighterHead;
-
     initBackgroung();
-    initLife();
 	initPlane();
 
+}
+
+void initPlane(void){
+	player->x = 300;
+	player->y = 750;
+	player->health = 4;
+	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
+}
+
+void initBackgroung(void){
+    SDL_Texture *background = SDL_CreateTexture(app.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT * 2);
+    SDL_SetRenderTarget(app.renderer,background);
+}
+
+void initialiseMemory(void){
+    memset(&stage, 0, sizeof(Stage));
+	stage.fighterTail = &stage.fighterHead;
+    player = malloc(sizeof(Entity));
+    memset(player, 0, sizeof(Entity));
+    stage.fighterTail->next = player;
+	stage.fighterTail = player;
+
+    player->texture = loadTexture("gfx/player.png");
+    Aeroport = loadTexture("gfx/background.png");
+    life = loadTexture("gfx/heart.png");
+    gameoverScreen = loadTexture("gfx/gameover.png");
     enemyTexture[0]= loadTexture("gfx/crate.png");
     enemyTexture[1]= loadTexture("gfx/bird.png");
 }
 
-static void initPlane(void){
-	player = malloc(sizeof(Entity));
-	memset(player, 0, sizeof(Entity));
-	stage.fighterTail->next = player;
-	stage.fighterTail = player;
+void deleteObjects(void){
+    Entity *e, *prev;
 
-	player->x = 300;
-	player->y = 750;
-	player->health = 4;
-	player->texture = loadTexture("gfx/player.png");
-	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
+    prev = &stage.fighterHead;
+
+    for (e = stage.fighterHead.next ; e != NULL ; e = e->next){
+        if(e !=player){
+            //Reparcourir la liste chainée
+            if (e == stage.fighterTail){
+                stage.fighterTail = prev;
+            }
+            //test pour ne pas supprimer l'avion
+            if(prev->next!=player){
+                prev->next = e->next;
+                free(e);
+                e = prev;
+            }else{
+            //pour ne pas supprimer la tête de la liste => sinon avion supprimer
+                prev = player;
+                prev->next = e->next;
+                free(e);
+                e = prev;
+            }
+        }
+        prev = e;
+    }
 }
 
-static void initBackgroung(void){
-    SDL_Texture *background = SDL_CreateTexture(app.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT * 2);
-    SDL_SetRenderTarget(app.renderer,background);
-    Aeroport = loadTexture("gfx/background.png");
-}
-
-static void initLife(void){
-    life = loadTexture("gfx/heart.png");
-}
 
 void logic(void){
 	doPlayer();
@@ -71,7 +82,7 @@ void logic(void){
 	hitPlane();
 }
 
-static void doPlayer(void){
+void doPlayer(void){
 
 	if (app.keyboard[SDL_SCANCODE_LEFT] && player->x > 90){
 		player->x -= PLAYER_SPEED;
@@ -83,7 +94,7 @@ static void doPlayer(void){
 
 }
 
-static void doObjects(void){
+void doObjects(void){
 	Entity *e, *prev;
 
 	prev = &stage.fighterHead;
@@ -116,7 +127,7 @@ static void doObjects(void){
 	}
 }
 
-static void spawnObjects(void){
+void spawnObjects(void){
 	Entity *enemy;
 
 	if (--enemySpawnTimer <= 0){
@@ -146,7 +157,7 @@ static void spawnObjects(void){
 	}
 }
 
-static void hitPlane(void){
+void hitPlane(void){
 	Entity *e;
 	for (e = stage.fighterHead.next ; e != NULL ; e = e->next){
 		if (collision(player->x, player->y, player->w, player->h, e->x, e->y, e->w, e->h) && e != player){
@@ -156,7 +167,7 @@ static void hitPlane(void){
 	}
 }
 
-static void drawItems(void){
+void drawItems(void){
     Entity *e;
 
     for (e = stage.fighterHead.next ; e != NULL ; e = e->next){
@@ -164,7 +175,7 @@ static void drawItems(void){
     }
 }
 
-static void drawBackground(void){
+void drawBackground(void){
     piste.y -=SPEEDRUNWAY ;
     if (piste.y <= 0){
         piste.y = piste.h;
@@ -175,16 +186,21 @@ static void drawBackground(void){
     SDL_RenderCopy(app.renderer, Aeroport, &piste, &dest);
 }
 
-static void drawLife(void){
+void drawLife(void){
     for(int nbLife= player->health; nbLife>0; nbLife--){
         blit(life,(nbLife*45), 10);
     }
 }
 
+void drawGameover(void){
+    blit(gameoverScreen, 0, 0);
+
+}
+
 void draw(void){
     drawBackground();
-    drawLife();
     drawItems();
+    drawLife();
 }
 
 int planeLife(void){

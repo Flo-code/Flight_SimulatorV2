@@ -8,6 +8,7 @@ int main(int argc, char *argv[]){
 	memset(&app, 0, sizeof(App));
 	initSDL();
 	atexit(cleanup);
+    initialiseMemory();
     while(1){
         initStage();
         while (planeLife()>0){
@@ -20,6 +21,11 @@ int main(int argc, char *argv[]){
             presentScene();
             SDL_Delay(16);
         }
+        deleteObjects();
+        prepareScene();
+        drawGameover();
+        presentScene();
+        sleep(2);
     }
         SDL_DestroyRenderer(app.renderer);
         SDL_DestroyWindow(app.window);
