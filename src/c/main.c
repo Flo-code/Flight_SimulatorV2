@@ -25,7 +25,7 @@ int main(int argc, char *argv[]){
         prepareScene();
         drawGameover();
         presentScene();
-        sleep(2);
+        while(app.keyboard[SDL_SCANCODE_RETURN] == 0){doInput();}
     }
         SDL_DestroyRenderer(app.renderer);
         SDL_DestroyWindow(app.window);
