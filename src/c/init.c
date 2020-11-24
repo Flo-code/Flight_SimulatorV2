@@ -21,7 +21,7 @@ void initSDL(void){
 	IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 }
 
-void cleanup(void){
+void cleanMemory(void){
 	SDL_DestroyRenderer(app.renderer);
 
 	SDL_DestroyWindow(app.window);

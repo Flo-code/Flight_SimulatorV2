@@ -1,27 +1,28 @@
+#ifndef STAGE_H_INCLUDED
+#define STAGE_H_INCLUDED
+
 #include "common.h"
+#include "draw.h"
+#include "collision.h"
 
-//For main
-void logic(void);
-void draw(void);
-int planeLife(void);
-void initialiseMemory(void);
-//Local
-void initBackgroung(void);
+void initStage(void);
 void initPlane(void);
+void initialiseMemory(void);
+void deleteObjects(void);
 
+void logic(void);
 void doPlayer(void);
 void doObjects(void);
+void spawnObjects(void);
+void hitPlane(void);
 
 void drawItems(void);
 void drawBackground(void);
 void drawLife(void);
-
-void spawnObjects(void);
-void hitPlane(void);
-
-extern void blit(SDL_Texture *texture, int x, int y);
-extern int collision(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2);
-extern SDL_Texture *loadTexture(char *filename);
+void drawGameover(void);
+void draw(void);
+int planeLife(void);
 
 extern App app;
 extern Stage stage;
+#endif

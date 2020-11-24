@@ -1,3 +1,6 @@
+#ifndef STRUCTS_H_INCLUDED
+#define STRUCTS_H_INCLUDED
+
 typedef struct Entity Entity;
 
 typedef struct {
@@ -21,3 +24,5 @@ struct Entity {
 typedef struct {
 	Entity fighterHead, *fighterTail;
 } Stage;
+
+#endif

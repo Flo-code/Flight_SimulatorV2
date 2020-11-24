@@ -1,5 +1,5 @@
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
+#ifndef PROPERTY_H_INCLUDED
+#define PROPERTY_H_INCLUDED
 
 #define SCREEN_WIDTH   700
 #define SCREEN_HEIGHT  850
@@ -9,3 +9,5 @@
 #define MAX_KEYBOARD_KEYS 350
 
 #define SPEEDRUNWAY 8
+
+#endif

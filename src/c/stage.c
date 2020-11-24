@@ -12,7 +12,6 @@ SDL_Rect piste =  {0, 0, SCREEN_WIDTH ,SCREEN_HEIGHT };
 void initStage(void){
     initBackgroung();
 	initPlane();
-
 }
 
 void initPlane(void){
@@ -20,11 +19,6 @@ void initPlane(void){
 	player->y = 750;
 	player->health = 4;
 	SDL_QueryTexture(player->texture, NULL, NULL, &player->w, &player->h);
-}
-
-void initBackgroung(void){
-    SDL_Texture *background = SDL_CreateTexture(app.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT * 2);
-    SDL_SetRenderTarget(app.renderer,background);
 }
 
 void initialiseMemory(void){
@@ -171,7 +165,7 @@ void drawItems(void){
     Entity *e;
 
     for (e = stage.fighterHead.next ; e != NULL ; e = e->next){
-        blit(e->texture, e->x, e->y);
+        render(e->texture, e->x, e->y);
     }
 }
 
@@ -188,13 +182,15 @@ void drawBackground(void){
 
 void drawLife(void){
     for(int nbLife= player->health; nbLife>0; nbLife--){
-        blit(life,(nbLife*45), 10);
+        render(life,(nbLife*45), 10);
     }
 }
 
 void drawGameover(void){
-    blit(gameoverScreen, 0, 0);
-
+    prepareScene();
+    render(gameoverScreen, 0, 0);
+    presentScene();
+    while(app.keyboard[SDL_SCANCODE_RETURN] == 0){doInput();}
 }
 
 void draw(void){

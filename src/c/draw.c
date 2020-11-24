@@ -19,7 +19,7 @@ SDL_Texture *loadTexture(char *filename){
 }
 
 //Déplacement des items dans la fenêtre
-void blit(SDL_Texture *texture, int x, int y){
+void render(SDL_Texture *texture, int x, int y){
 	SDL_Rect dest;
 
 	dest.x = x;
@@ -27,4 +27,9 @@ void blit(SDL_Texture *texture, int x, int y){
 	SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
 
 	SDL_RenderCopy(app.renderer, texture, NULL, &dest);
+}
+
+void initBackgroung(void){
+    SDL_Texture *background = SDL_CreateTexture(app.renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, SCREEN_WIDTH, SCREEN_HEIGHT * 2);
+    SDL_SetRenderTarget(app.renderer,background);
 }

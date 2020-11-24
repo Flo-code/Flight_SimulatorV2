@@ -36,6 +36,9 @@
 			<Add library="SDL2main" />
 			<Add library="SDL2" />
 		</Linker>
+		<Unit filename="src/c/collision.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src/c/draw.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -51,18 +54,15 @@
 		<Unit filename="src/c/stage.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/c/util.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="src/h/collision.h" />
 		<Unit filename="src/h/common.h" />
-		<Unit filename="src/h/defs.h" />
 		<Unit filename="src/h/draw.h" />
 		<Unit filename="src/h/init.h" />
 		<Unit filename="src/h/input.h" />
 		<Unit filename="src/h/main.h" />
+		<Unit filename="src/h/property.h" />
 		<Unit filename="src/h/stage.h" />
 		<Unit filename="src/h/structs.h" />
-		<Unit filename="src/h/util.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
